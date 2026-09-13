@@ -86,33 +86,6 @@
   .track{ height:8px; background:var(--line); border-radius:6px; overflow:hidden;}
   .track span{ display:block; height:100%; border-radius:6px; background:var(--coffee); }
 
-  /* ===== SKILL MIX PIE =====
-  .pie-section{ display:grid; grid-template-columns:0.8fr 1.2fr; gap:40px; align-items:center; }
-  .pie{ width:190px; height:190px; border-radius:50%; margin:0 auto; }
-  .legend{ display:grid; grid-template-columns:1fr 1fr; gap:14px 24px; }
-  .legend div{ display:flex; align-items:center; gap:10px; font-size:0.88rem; }
-  .legend .swatch{ width:12px; height:12px; border-radius:3px; flex-shrink:0; }
-  .legend .name{ flex:1; }
-  .legend .val{ font-family:'JetBrains Mono',monospace; color:var(--black); font-size:0.82rem; }
-   */
-   .pie-section{ display:grid; grid-template-columns:0.8fr 1.2fr; gap:40px; align-items:center; }
-
-.pie-wrap{ position:relative; width:400px; height:400px; margin:0 auto; }
-
-.pie{ width:220px; height:220px; border-radius:50%; position:absolute; top:90px; left:90px; }
-
-.pie-lines{ position:absolute; top:0; left:0; pointer-events:none; }
-.pie-lines line{ stroke:#432d27; stroke-width:1; }
-.pie-lines circle{ fill:#432d27; }
-
-.pie-label{ position:absolute; font-size:14px; font-weight:600; color:#432d27; white-space:nowrap; }
-
-.legend{ display:grid; grid-template-columns:1fr 1fr; gap:14px 24px; }
-.legend div{ display:flex; align-items:center; gap:10px; font-size:0.88rem; }
-.legend .swatch{ width:12px; height:12px; border-radius:3px; flex-shrink:0; }
-.legend .name{ flex:1; }
-.legend .val{ font-family:'JetBrains Mono',monospace; color:var(--black); font-size:0.82rem; }
-
   /* ===== EXPERIENCE TIMELINE ===== */
   .timeline{ position:relative; padding-left:28px; border-left:2px solid var(--line); }
   .t-item{ position:relative; margin-bottom:34px; }
@@ -151,7 +124,6 @@
     .hero-grid{ grid-template-columns:1fr; }
     .stat-row{ grid-template-columns:repeat(2,1fr); }
     .about-grid{ grid-template-columns:1fr; }
-    .pie-section{ grid-template-columns:1fr; }
     .contact-grid{ grid-template-columns:1fr; }
     footer{ flex-direction:column; gap:8px; padding:22px; }
   }
@@ -188,8 +160,7 @@
         <p>Hands-on experience in SQL, Python, Salesforce, Tableau, and Power BI — building data pipelines, governance frameworks, and stakeholder-facing dashboards across healthcare, membership, and university operations. Dean's List honoree and Northrop Grumman STEM Scholar, finishing a B.S. in Information Technology at George Mason University.</p>
         <div class="btn-row">
           <a class="btn" href="#projects">See My Work</a>
-          <!-- /* ===== Making the View Resume into a new tab, so the person does not need to hit come back===== */ -->
-          <a class="btn ghost" href="https://gmuedu-my.sharepoint.com/:w:/g/personal/nnguy28_gmu_edu/IQAJVaww7JfkR4NDjGMMsz8pAZhLYrEf5XtuqEtsypswfG0?e=iwdRMg" target="_blank" rel="noopener noreferrer">View Résumé</a>
+          <a class="btn ghost" href="https://gmuedu-my.sharepoint.com/:w:/r/personal/nnguy28_gmu_edu/Documents/KatieNguyen_Resume_08282026.docx?d=wf3bfcdf72ed04bb1b868781fd50aa378&csf=1&web=1&e=sotcRR" target="_blank" rel="noopener noreferrer">View Résumé</a>
         </div>
       </div>
 
@@ -281,62 +252,6 @@
   </div>
 </section>
 
-<section id="toolmix" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-  <div class="wrap">
-    <span class="eyebrow">Toolkit</span>
-    <h2 class="section-title">How the Skill Set Breaks Down</h2>
-    <!-- <div class="pie-section">
-      <div class="pie" style="background:conic-gradient(#D7B7A3 0% 35%, #985e49 35% 60%, #432d27 60% 82%, #c6978e 82% 100%);"></div>
-      <div class="legend">
-        <div><span class="swatch" style="background:#D7B7A3;"></span><span class="name">SQL &amp; Databases</span><span class="val">35%</span></div>
-        <div><span class="swatch" style="background:#985e49;"></span><span class="name">Python &amp; Libraries</span><span class="val">25%</span></div>
-        <div><span class="swatch" style="background:#432d27;"></span><span class="name">Tableau / Power BI / Excel</span><span class="val">22%</span></div>
-        <div><span class="swatch" style="background:#c6978e;"></span><span class="name">CRM (Salesforce, Zoho)</span><span class="val">18%</span></div>
-      </div>
-
-    </div> -->
-    <div class="pie-section">
-      <div class="pie-wrap">
-        <svg class="pie-lines" width="400" height="400" viewBox="0 0 400 400">
-          <line x1="298" y1="150" x2="329" y2="134" />
-          <line x1="329" y1="134" x2="349" y2="134" />
-          <circle cx="298" cy="150" r="2.5" />
-    
-          <line x1="217" y1="309" x2="223" y2="343" />
-          <line x1="223" y1="343" x2="243" y2="343" />
-          <circle cx="217" cy="309" r="2.5" />
-    
-          <line x1="94" y1="228" x2="60" y2="236" />
-          <line x1="60" y1="236" x2="40" y2="236" />
-          <circle cx="94" cy="228" r="2.5" />
-    
-          <line x1="141" y1="107" x2="122" y2="78" />
-          <line x1="122" y1="78" x2="102" y2="78" />
-          <circle cx="141" cy="107" r="2.5" />
-        </svg>
-    
-        <div class="pie" style="background:conic-gradient(#D7B7A3 0% 35%, #985e49 35% 60%, #432d27 60% 82%, #c6978e 82% 100%);"></div>
-    
-        <span class="pie-label" style="top:127px; left:351px;">35%</span>
-        <span class="pie-label" style="top:336px; left:245px;">25%</span>
-        <span class="pie-label" style="top:229px; left:10px;">22%</span>
-        <span class="pie-label" style="top:71px; left:68px;">18%</span>
-      </div>
-    
-      <div class="legend">
-        <div><span class="swatch" style="background:#D7B7A3;"></span><span class="name">SQL &amp; Databases</span><span class="val">35%</span></div>
-        <div><span class="swatch" style="background:#985e49;"></span><span class="name">Python &amp; Libraries</span><span class="val">25%</span></div>
-        <div><span class="swatch" style="background:#432d27;"></span><span class="name">Tableau / Power BI / Excel</span><span class="val">22%</span></div>
-        <div><span class="swatch" style="background:#c6978e;"></span><span class="name">CRM (Salesforce, Zoho)</span><span class="val">18%</span></div>
-      </div>
-    </div>
-    
-    </div>
-    </div>
-    </div>
-  </div>
-</section>
-
 <section id="experience">
   <div class="wrap">
     <span class="eyebrow">Experience</span>
@@ -347,10 +262,12 @@
         <h3>Data Analyst</h3>
         <span class="org">LeadingAge, Washington, DC</span>
         <ul>
-          <li>Extract, clean, and analyze data from Salesforce (Nimble AMS) and external sources to support business decisions.</li>
-          <li>Develop and maintain dashboards and ad hoc analyses on membership trends, revenue, and engagement metrics.</li>
-          <li>Translate business needs into actionable reporting solutions with cross-functional teams.</li>
-        </ul>
+          <li> Collecting, processing, and visualizing data from enterprise-level sources, including Salesforce/Nimble AMS, IRS 990 forms, HUD housing data, CMS/CCN provider data, and marketing platforms, using Excel, Power Query, Access, and Tableau, resulting in accurate, decision-ready datasets for organizational stakeholders. </li>
+          <li>Designing and maintaining interactive dashboards and reports, using Tableau, resulting in timely and accurate performance insights delivered to staff and leadership.</li>
+          <li>Owning the end-to-end Student Membership pipeline, from data verification and eligibility checks through granting membership, ensuring accurate, timely processing and data integrity across the full membership lifecycle.</li>
+          <li>Analyzing structured and unstructured data from multiple datasets, using statistical analysis and trend identification techniques, resulting in key performance metrics that support operational and business performance monitoring. </li>
+          <li>Cleaning, transforming, validating, and labeling datasets, including verification of Home Health, Hospice, and Skilled Nursing Facility CCNs, using Excel, SQL, and data quality management practices, resulting in reliable, audit-ready data for recurring and ad hoc stakeholder reporting.</li>
+        <li> Producing recurring and ad hoc reports for IT stakeholders, translating analytical findings into clear, actionable summaries for non-technical audiences.</li></ul>
       </div>
       <div class="t-item">
         <span class="period">Oct 2025 — May 2026</span>
@@ -358,8 +275,9 @@
         <span class="org">LeadingAge, Washington, DC</span>
         <ul>
           <li>Standardized and validated Salesforce (Nimble AMS) fields to enforce data governance across departments.</li>
-          <li>Cleaned and transformed raw datasets using SQL and Advanced Excel, improving accuracy and reporting cycles.</li>
-          <li>Engineered SQL validation checks in Access to ensure 100% membership billing accuracy.</li>
+          <li>Cleaned, validated, and transformed large datasets 100,000+ records using SQL and advanced Excel, applying data quality management and cleaning practices while maintaining high-quality data standards.</li>
+          <li>Created SQL validation scripts to identify billing discrepancies before processing, contributing to 100% billing accuracy and communicating findings to cross-functional stakeholders.</li>
+          <li>Collaborated with multiple departments to resolve data questions, maintain consistent business definitions across teams, and support ad hoc reporting requests.</li>
         </ul>
       </div>
       <div class="t-item">
@@ -368,17 +286,21 @@
         <span class="org">LeadingAge, Washington, DC</span>
         <ul>
           <li>Extracted, cleaned, and analyzed data from Salesforce (Nimble AMS) to support operational reporting.</li>
-          <li>Built dashboards and reports using Excel (pivot tables, macros, charts) for stakeholders.</li>
+          <li>Developed dashboards and reports using Excel (pivot tables, macros, charts) for stakeholders.</li>
+          <li>Built data quality check process to evaluate third-party sources supporting vendor-contract renewal decision. </li>
         </ul>
       </div>
       <div class="t-item">
-        <span class="period">May 2024 — March 2026</span>
+        <span class="period">May 2024 — May 2026</span>
         <h3>Database Assistant</h3>
         <span class="org">George Mason University, Office of University Branding</span>
         <ul>
           <li>Managed and validated 8,000+ records to maintain 100% data integrity in operations reporting.</li>
           <li>Migrated 8,000+ legacy Excel records to CRM, consolidating to 5,000 unique records and cutting report processing time from days to hours.</li>
           <li>Built SQL queries and automated Access workflows to detect duplicates and audit data quality.</li>
+          <li>Migrated legacy databases into a CRM systems and automated workflows, reducing report process time by 90% while maintaining 100% data accuracy and integrity.</li>
+          <li>Interviewed and onboarded new staffs.</li>
+          <li>Trained 5+ personels including supervisors and staffs on new CRM modules, reducing ramp-up time, and ensuring the team's ability to work efficiently with the new system.</li>
         </ul>
       </div>
       <div class="t-item">
@@ -440,7 +362,7 @@
     <span class="eyebrow">Get in Touch</span>
     <h2 class="section-title">Say Hello</h2>
     <div class="contact-grid">
-      <div class="card"><span>Email</span><a href="mailto:tunnk33@gmail.com">katienguyendata@gmail.com</a></div>
+      <div class="card"><span>Email</span><a href="mailto:katienguyendata@gmail.com">katienguyendata@gmail.com</a></div>
       <div class="card"><span>LinkedIn</span><a href="https://www.linkedin.com/in/ngoc-kha-tu-nguyen/" target="_blank" rel="noopener">ngoc-kha-tu-nguyen</a></div>
       <div class="card"><span>GitHub</span><a href="https://github.com/katng2886" target="_blank" rel="noopener">katng2886</a></div>
     </div>
