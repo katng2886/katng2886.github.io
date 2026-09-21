@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Katie Kha-Tu Nguyen — Data Analyst</title>
+<title>Katie Kha-Tu Nguyen, Data Analyst</title>
+<meta name="description" content="Data Analyst in the DMV area. SQL, Python, Salesforce, Tableau, and Power BI. ELT pipelines, data governance, and dashboards across healthcare, membership, and university operations.">
+<meta property="og:title" content="Katie Kha-Tu Nguyen, Data Analyst">
+<meta property="og:description" content="Data Analyst in the DMV area. ELT pipelines, governance, and dashboards built on SQL, Python, Salesforce, Tableau, and Power BI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://katng2886.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%98%95</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -13,15 +21,27 @@
     --coffee:#6F4E37;
     --espresso:#3B2A1E;
     --latte:#C9A26B;
-    --muted:#8B7862;
+    --muted:#6B5B48;
     --line:#E3D6C1;
-    --black: #000000;
+
+    --fs-xs:  0.8125rem;
+    --fs-sm:  0.9375rem;
+    --fs-base:1.0625rem;
+    --fs-h3:  1.1875rem;
+    --fs-h2:  clamp(1.75rem, 2.4vw, 2.125rem);
+    --fs-h1:  clamp(2.25rem, 4vw, 3.25rem);
+    --measure:68ch;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  body{ background:var(--cream); color:var(--black); font-family:'Inter',sans-serif; line-height:1.65; }
-  h1,h2,h3{ font-family:'Fraunces',serif; font-weight:600; letter-spacing:-0.01em; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--cream); color:var(--espresso); font-family:'Inter',sans-serif; font-size:var(--fs-base); line-height:1.7; }
+  h1,h2,h3{ font-family:'Fraunces',serif; font-weight:600; letter-spacing:-0.01em; color:var(--espresso); }
   a{ color:inherit; text-decoration:none; }
   .mono{ font-family:'JetBrains Mono',monospace; }
+  :focus-visible{ outline:2px solid var(--coffee); outline-offset:3px; border-radius:4px; }
+
+  .skip{ position:absolute; left:-9999px; top:0; background:var(--coffee); color:#fff; padding:10px 16px; border-radius:0 0 8px 0; z-index:50; }
+  .skip:focus{ left:0; }
 
   header{
     display:flex; align-items:center; justify-content:space-between;
@@ -29,90 +49,127 @@
     position:sticky; top:0; z-index:20;
   }
   .brand{ display:flex; align-items:center; gap:12px; }
-  .brand .cup{ width:38px; height:38px; border-radius:50%; background:var(--coffee); display:flex; align-items:center; justify-content:center; font-size:1.1rem; }
-  .brand span{ font-family:'Fraunces',serif; font-weight:600; font-size:1rem; }
-  .brand small{ display:block; font-size:0.72rem; color:var(--black); }
-  nav ul{ list-style:none; display:flex; gap:26px; }
-  nav a{ font-size:0.85rem; color:var(--black); font-weight:500; }
-  nav a:hover{ color:var(--black); }
-  .navToggle{ display:none; background:var(--coffee); color:#fff; border:none; padding:9px 16px; border-radius:8px; font-size:0.8rem; cursor:pointer; font-family:inherit; }
+  .brand .cup{ width:40px; height:40px; border-radius:50%; background:var(--coffee); display:flex; align-items:center; justify-content:center; font-size:1.15rem; }
+  .brand span{ font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; }
+  .brand small{ display:block; font-size:var(--fs-xs); color:var(--muted); }
+  nav ul{ list-style:none; display:flex; gap:28px; }
+  nav a{ font-size:var(--fs-sm); color:var(--espresso); font-weight:500; }
+  nav a:hover{ color:var(--coffee); }
+  .navToggle{ display:none; background:var(--coffee); color:#fff; border:none; padding:9px 16px; border-radius:8px; font-size:var(--fs-sm); cursor:pointer; font-family:inherit; }
 
   .wrap{ max-width:1160px; margin:0 auto; padding:0 48px; }
-  section{ padding:64px 0; }
-  .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--coffee); margin-bottom:12px; display:block; }
-  h2.section-title{ font-size:1.7rem; margin-bottom:32px; }
-  .card{ background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:28px; }
+  section{ padding:80px 0; scroll-margin-top:96px; }
+  .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:var(--fs-xs); letter-spacing:0.06em; color:var(--coffee); margin-bottom:12px; display:block; }
+  h2.section-title{ font-size:var(--fs-h2); margin-bottom:40px; }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:30px; }
 
   /* ===== HERO ===== */
-  #hero{ position:relative; overflow:hidden; }
+  #hero{ position:relative; overflow:hidden; padding-top:64px; }
   #hero::before{
-    content:''; position:absolute; top:-120px; right:-120px; width:400px; height:400px;
-    border:40px solid var(--latte); opacity:0.14; border-radius:50%;
+    content:''; position:absolute; top:-140px; right:-140px; width:420px; height:420px;
+    border:44px solid var(--latte); opacity:0.14; border-radius:50%;
   }
-  #hero .wrap{ position:relative; padding-top:56px; }
-  .hero-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:28px; align-items:stretch; }
-  .hero-intro .role{ color:var(--black); font-family:'JetBrains Mono',monospace; font-size:0.85rem; margin-bottom:16px; display:block;}
-  .hero-intro h1{ font-size:2.5rem; line-height:1.22; margin-bottom:18px; }
-  .hero-intro p{ color:var(--black); max-width:52ch; margin-bottom:26px; }
+  #hero .wrap{ position:relative; }
+  .hero-intro{ display:grid; grid-template-columns:1.15fr 1fr; gap:20px 56px; align-items:end; }
+  .hero-intro .role{ grid-column:1 / -1; color:var(--muted); font-family:'JetBrains Mono',monospace; font-size:1rem; margin-bottom:4px; display:block;}
+  .hero-intro h1{ font-size:var(--fs-h1); line-height:1.13; max-width:20ch; }
+  .hero-copy p{ max-width:52ch; margin-bottom:14px; }
+  .hero-copy p.tools{ font-family:'JetBrains Mono',monospace; font-size:var(--fs-sm); color:var(--muted); margin-bottom:24px; }
   .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
-  .btn{ display:inline-block; padding:13px 26px; background:var(--coffee); color:#fff; border-radius:10px; font-size:0.88rem; font-weight:500; }
+  .btn{ display:inline-block; padding:14px 28px; background:var(--coffee); color:#fff; border-radius:10px; font-size:var(--fs-sm); font-weight:500; }
   .btn:hover{ background:var(--espresso); }
-  .btn.ghost{ background:transparent; color:var(--black); border:1px solid var(--coffee); }
+  .btn.ghost{ background:transparent; color:var(--espresso); border:1px solid var(--coffee); }
   .btn.ghost:hover{ background:var(--coffee); color:#fff; }
 
-  .donut-card{ display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
-  .donut-wrap{ position:relative; width:150px; height:150px; }
-  .donut-wrap svg{ transform:rotate(-90deg); }
-  .donut-center{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;}
-  .donut-center .figure{ font-family:'Fraunces',serif; font-size:1.8rem; font-weight:700; }
-  .donut-center .cap{ font-size:0.72rem; color:var(--black); text-transform:uppercase; letter-spacing:0.05em; margin-top:4px;}
+  /* ===== DASHBOARD PANEL ===== */
+  .viz-panel{ margin-top:48px; padding:0; overflow:hidden; }
+  .viz-head{
+    display:flex; align-items:baseline; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    padding:20px 26px; border-bottom:1px solid var(--line);
+  }
+  .viz-head .label{ font-family:'JetBrains Mono',monospace; font-size:var(--fs-xs); letter-spacing:0.06em; color:var(--coffee); display:block; margin-bottom:3px; }
+  .viz-head h2{ font-size:var(--fs-h3); font-weight:600; }
+  .viz-head p{ font-size:var(--fs-sm); color:var(--muted); max-width:58ch; margin-top:4px; }
+  .viz-head a{ font-size:var(--fs-sm); font-weight:500; color:var(--coffee); border-bottom:1px solid var(--latte); white-space:nowrap; }
+  .viz-head a:hover{ border-bottom-color:var(--coffee); }
 
-  .stat-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:24px; }
-  .stat-card .num{ font-family:'Fraunces',serif; font-size:1.7rem; font-weight:700; }
-  .stat-card .label{ font-size:0.76rem; color:var(--black); text-transform:uppercase; letter-spacing:0.03em; margin-top:6px;}
-  .stat-card .bar{ height:6px; background:var(--line); border-radius:6px; margin-top:14px; overflow:hidden;}
-  .stat-card .bar span{ display:block; height:100%; background:var(--coffee); border-radius:6px; }
+  /* The frame clips; the scaler shrinks the whole dashboard to fit.
+     Set the real published size on the .viz-frame data attributes below. */
+  .viz-frame{ position:relative; width:100%; overflow:hidden; background:var(--cream); }
+  .viz-scaler{ transform-origin:top left; }
+  .viz-scaler iframe{ width:100%; height:100%; border:0; display:block; }
+
+  .viz-mobile{ display:none; padding:26px; }
+  .viz-mobile p{ font-size:var(--fs-sm); color:var(--muted); margin-bottom:14px; }
+
+  .stat-row{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:20px; }
+  .stat-card{ padding:22px 20px; }
+  .stat-card .num{ font-family:'Fraunces',serif; font-size:1.9rem; font-weight:700; color:var(--coffee); line-height:1.2; }
+  .stat-card .label{ font-size:var(--fs-xs); color:var(--muted); margin-top:6px; line-height:1.5; }
 
   /* ===== ABOUT ===== */
   .about-grid{ display:grid; grid-template-columns:1.15fr 1fr; gap:32px; align-items:start;}
-  .about-grid p{ color:var(--black); margin-bottom:14px; }
-  .edu-line{ display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--line); font-size:0.88rem;}
+  .about-grid p{ margin-bottom:16px; max-width:var(--measure); }
+  .edu-line{ display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid var(--line); font-size:var(--fs-sm);}
   .edu-line:last-child{ border-bottom:none; }
-  .edu-line span:first-child{ color:var(--black); }
+  .edu-line span:first-child{ color:var(--muted); flex:0 0 auto; }
+  .edu-line span:last-child{ text-align:right; }
 
-  .skill-bars .row{ margin-bottom:16px; }
-  .skill-bars .row-top{ display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:6px; }
-  .skill-bars .row-top .pct{ font-family:'JetBrains Mono',monospace; color:var(--black); }
-  .track{ height:8px; background:var(--line); border-radius:6px; overflow:hidden;}
-  .track span{ display:block; height:100%; border-radius:6px; background:var(--coffee); }
+  .skills h3{ font-size:var(--fs-h3); margin-bottom:4px; }
+  .skills .legend{ font-size:var(--fs-xs); color:var(--muted); margin-bottom:20px; max-width:var(--measure); }
+  .skills .row{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); }
+  .skills .row:last-child{ border-bottom:none; }
+  .skills .name{ font-size:var(--fs-sm); }
+  .skills .level{ display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+  .skills .level .word{ font-family:'JetBrains Mono',monospace; font-size:var(--fs-xs); color:var(--muted); width:80px; text-align:right; }
+  .roast{ display:flex; gap:4px; }
+  .roast i{ width:10px; height:15px; border-radius:5px 5px 4px 4px; background:var(--line); display:block; }
+  .roast i.on{ background:var(--coffee); }
 
   /* ===== EXPERIENCE TIMELINE ===== */
   .timeline{ position:relative; padding-left:28px; border-left:2px solid var(--line); }
-  .t-item{ position:relative; margin-bottom:34px; }
+  .t-item{ position:relative; margin-bottom:40px; }
   .t-item:last-child{ margin-bottom:0; }
-  .t-item::before{ content:''; position:absolute; left:-34px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--coffee); border:3px solid var(--cream); box-shadow:0 0 0 2px var(--coffee); }
-  .t-item .period{ font-family:'JetBrains Mono',monospace; font-size:0.76rem; color:var(--black); margin-bottom:4px; display:block;}
-  .t-item h3{ font-size:1.05rem; margin-bottom:2px;}
-  .t-item .org{ font-size:0.85rem; color:var(--black); margin-bottom:10px; display:block;}
+  .t-item::before{ content:''; position:absolute; left:-34px; top:6px; width:12px; height:12px; border-radius:50%; background:var(--coffee); border:3px solid var(--cream); box-shadow:0 0 0 2px var(--coffee); }
+  .t-item .period{ font-family:'JetBrains Mono',monospace; font-size:var(--fs-xs); color:var(--muted); margin-bottom:4px; display:block;}
+  .t-item h3{ font-size:var(--fs-h3); margin-bottom:2px;}
+  .t-item .org{ font-size:var(--fs-sm); color:var(--muted); margin-bottom:10px; display:block;}
   .t-item ul{ padding-left:18px; }
-  .t-item li{ color:var(--black); font-size:0.9rem; margin-bottom:4px; }
+  .t-item li{ font-size:var(--fs-sm); margin-bottom:8px; max-width:66ch; }
+
+  @media (min-width:1000px){
+    .t-item{ display:grid; grid-template-columns:175px 1fr; column-gap:36px; align-items:start; }
+    .t-item .period{ grid-column:1; grid-row:1 / span 3; text-align:right; margin-top:6px; }
+    .t-item h3  { grid-column:2; grid-row:1; }
+    .t-item .org{ grid-column:2; grid-row:2; }
+    .t-item ul  { grid-column:2; grid-row:3; margin-top:10px; }
+  }
 
   /* ===== PROJECTS ===== */
-  .projects-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+  .projects-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
+  .pcard{ display:flex; flex-direction:column; }
   .pcard .tagrow{ display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap;}
-  .pcard .tagrow span{ font-family:'JetBrains Mono',monospace; font-size:0.7rem; padding:3px 9px; background:var(--cream); border-radius:6px; color:var(--black); }
-  .pcard h3{ font-size:1.05rem; margin-bottom:10px; }
-  .pcard p{ color:var(--black); font-size:0.9rem; margin-bottom:16px; }
-  .pcard a{ font-size:0.85rem; color:var(--black); font-weight:500; border-bottom:1px solid var(--coffee); }
+  .pcard .tagrow span{ font-family:'JetBrains Mono',monospace; font-size:var(--fs-xs); padding:3px 10px; background:var(--cream); border-radius:6px; color:var(--muted); }
+  .pcard h3{ font-size:var(--fs-h3); margin-bottom:10px; }
+  .pcard p{ font-size:var(--fs-sm); margin-bottom:18px; max-width:var(--measure); }
+  .pcard .links{ margin-top:auto; display:flex; gap:16px; flex-wrap:wrap; }
+  .pcard .links a{ font-size:var(--fs-sm); color:var(--coffee); font-weight:500; border-bottom:1px solid var(--latte); }
+  .pcard .links a:hover{ border-bottom-color:var(--coffee); }
 
   /* ===== CONTACT ===== */
   .contact-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
   .contact-grid .card{ text-align:center; }
-  .contact-grid .card span{ display:block; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--black); margin-bottom:10px; font-family:'JetBrains Mono',monospace;}
-  .contact-grid .card a{ font-size:0.98rem; font-weight:600; word-break:break-word; }
-  .contact-grid .card a:hover{ color:var(--black); }
+  .contact-grid .card span{ display:block; font-size:var(--fs-xs); letter-spacing:0.05em; color:var(--muted); margin-bottom:10px; font-family:'JetBrains Mono',monospace;}
+  .contact-grid .card a{ font-size:1.05rem; font-weight:600; word-break:break-word; }
+  .contact-grid .card a:hover{ color:var(--coffee); }
 
-  footer{ padding:28px 48px; color:var(--black); font-size:0.8rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; }
+  footer{ padding:30px 48px; color:var(--muted); font-size:var(--fs-sm); border-top:1px solid var(--line); display:flex; justify-content:space-between; }
+
+  @media (min-width:1440px){ html{ font-size:17px; } }
+
+  @media (max-width:1100px){
+    .stat-row{ grid-template-columns:repeat(3,1fr); }
+  }
 
   @media (max-width:900px){
     header{ padding:16px 22px; }
@@ -121,26 +178,40 @@
     nav ul{ flex-direction:column; gap:16px; }
     .navToggle{ display:block; }
     .wrap{ padding:0 22px; }
-    .hero-grid{ grid-template-columns:1fr; }
+    section{ padding:52px 0; }
+    #hero{ padding-top:44px; }
+    .hero-intro{ grid-template-columns:1fr; gap:18px; }
+    .hero-intro h1{ max-width:none; }
+    .viz-panel{ margin-top:32px; }
     .stat-row{ grid-template-columns:repeat(2,1fr); }
     .about-grid{ grid-template-columns:1fr; }
     .contact-grid{ grid-template-columns:1fr; }
+    .edu-line{ flex-direction:column; gap:2px; }
+    .edu-line span:last-child{ text-align:left; }
     footer{ flex-direction:column; gap:8px; padding:22px; }
+  }
+
+  /* Below this width the dashboard scales too small to read, so show a link instead. */
+  @media (max-width:700px){
+    .viz-frame{ display:none; }
+    .viz-mobile{ display:block; }
   }
 </style>
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to content</a>
+
 <header>
   <div class="brand">
-    <div class="cup">☕</div>
+    <div class="cup" aria-hidden="true">&#9749;</div>
     <div>
       <span>Katie Nguyen</span>
       <small>data, brewed carefully</small>
     </div>
   </div>
-  <button class="navToggle" onclick="document.getElementById('nav').classList.toggle('open')">Menu</button>
-  <nav id="nav">
+  <button class="navToggle" id="navToggle" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main">
     <ul>
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -151,56 +222,70 @@
   </nav>
 </header>
 
+<main id="main">
+
 <section id="hero">
   <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-intro">
-        <span class="role">Data Analyst · DMV Area</span>
-        <h1>I take raw data and thoughtfully turn it into something useful.</h1>
-        <p>I have more than 2 years of professional experience in Database Management, Data Analysis, Data Security, and Data Stewardship. Proficient tool used: SQL, Python, Salesforce, Tableau, and Power BI — building data pipelines, governance frameworks, and stakeholder-facing dashboards across healthcare, membership, and university operations. Dean's List honoree and Northrop Grumman STEM Scholar, graduated summa cum laude with B.S. in Information Technology at George Mason University.</p>
+    <div class="hero-intro">
+      <span class="role">Data Analyst &middot; DMV Area</span>
+      <h1>I take raw data and turn it into something people can actually decide with.</h1>
+      <div class="hero-copy">
+        <p>Two years turning "unstructure" data into numbers stakeholders trust, building ELT pipelines, governance frameworks, and dashboards across healthcare, membership, and university operations.</p>
+        <p class="tools">SQL &nbsp;/&nbsp; Python &nbsp;/&nbsp; Salesforce (Nimble AMS) &nbsp;/&nbsp; Tableau &nbsp;/&nbsp; Power BI &nbsp;/&nbsp; ELT</p>
         <div class="btn-row">
-          <a class="btn" href="#projects">See My Work</a>
-          <a class="btn ghost" href="https://gmuedu-my.sharepoint.com/:w:/g/personal/nnguy28_gmu_edu/IQD3zb_z0C6xS7hoeB_VCqN4AZ4nxLvC1qE4-Pj5xuwb0TQ" target="_blank" rel="noopener noreferrer">View Résumé</a>
+          <a class="btn" href="#projects">See my work</a>
+          <a class="btn ghost" href="https://gmuedu-my.sharepoint.com/:w:/g/personal/nnguy28_gmu_edu/IQD3zb_z0C6xS7hoeB_VCqN4AZ4nxLvC1qE4-Pj5xuwb0TQ" target="_blank" rel="noopener noreferrer">View r&eacute;sum&eacute;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card viz-panel">
+      <div class="viz-head">
+        <div>
+          <span class="label">Live dashboard</span>
+          <h2>U.S. nursing home quality and staffing</h2>
+          <p>Built from CMS provider data, cleaned in Pandas, published to Tableau Public. Filter and drill down directly below.</p>
+        </div>
+        <a href="https://public.tableau.com/views/NursingHomeVisualization_17651681851060/Dashboard1?:language=en-US&amp;:sid=&amp;:redirect=auth&amp;:display_count=n&amp;:origin=viz_share_link" target="_blank" rel="noopener">Open in Tableau Public</a>
+      </div>
+
+      <!-- Dashboard display -->
+      <div class="viz-frame" data-viz-width="1600px" data-viz-height="950px">
+        <div class="viz-scaler">
+          <iframe
+            title="Nursing home quality dashboard, built in Tableau"
+            src="https://public.tableau.com/views/NursingHomeVisualization_17651681851060/Dashboard1?:showVizHome=no&amp;:embed=y&amp;:display_count=n&amp;:origin=viz_share_link"
+            loading="lazy"
+            allowfullscreen></iframe>
         </div>
       </div>
 
-      <div class="card donut-card">
-        <div class="donut-wrap">
-          <svg width="150" height="150" viewBox="0 0 150 150">
-            <circle cx="75" cy="75" r="62" fill="none" stroke="#E3D6C1" stroke-width="14"/>
-            <circle cx="75" cy="75" r="62" fill="none" stroke="#6F4E37" stroke-width="14"
-              stroke-linecap="round"
-              stroke-dasharray="379.5"
-              stroke-dashoffset="8.5"/>
-          </svg>
-          <div class="donut-center">
-            <div class="figure">3.91</div>
-            <div class="cap">GPA / 4.00</div>
-          </div>
-        </div>
+      <div class="viz-mobile">
+        <p>This dashboard is interactive and built for a wider screen.</p>
+        <a class="btn" href="https://public.tableau.com/views/NursingHomeVisualization_17651681851060/Dashboard1?:language=en-US&amp;:sid=&amp;:redirect=auth&amp;:display_count=n&amp;:origin=viz_share_link" target="_blank" rel="noopener">Open the dashboard</a>
       </div>
     </div>
 
     <div class="stat-row">
       <div class="card stat-card">
-        <div class="num">5</div>
-        <div class="label">Roles Held</div>
-        <div class="bar"><span style="width:90%"></span></div>
+        <div class="num">3.91</div>
+        <div class="label">GPA, summa cum laude</div>
+      </div>
+      <div class="card stat-card">
+        <div class="num">100K+</div>
+        <div class="label">Records cleaned and validated</div>
       </div>
       <div class="card stat-card">
         <div class="num">8K+</div>
-        <div class="label">Records Migrated</div>
-        <div class="bar"><span style="width:100%; background:var(--latte);"></span></div>
+        <div class="label">Records migrated to CRM</div>
       </div>
       <div class="card stat-card">
         <div class="num">100%</div>
-        <div class="label">Billing Accuracy</div>
-        <div class="bar"><span style="width:100%;"></span></div>
+        <div class="label">Billing accuracy maintained</div>
       </div>
       <div class="card stat-card">
-        <div class="num">85%</div>
-        <div class="label">ML Model Accuracy</div>
-        <div class="bar"><span style="width:85%; background:var(--latte);"></span></div>
+        <div class="num">80%</div>
+        <div class="label">Faster report processing</div>
       </div>
     </div>
   </div>
@@ -209,43 +294,50 @@
 <section id="about">
   <div class="wrap">
     <span class="eyebrow">About</span>
-    <h2 class="section-title">Background &amp; Education</h2>
+    <h2 class="section-title">Background and education</h2>
     <div class="about-grid">
       <div class="card">
-        <p>I'm a Data Analyst currently at LeadingAge in Washington, DC., where I extract, clean, and analyze data from Salesforce (Nimble AMS) and external sources to support membership, revenue, and engagement reporting. Before that, I spent nearly two years moving through data quality and intern roles at the same organization, and managed a 8,000+ record database migration at George Mason University's Office of University Branding.</p>
-        <p>I like the parts of this work most people skip, which is validating fields, tracing down duplicates, making sure a number everyone trusts is actually correct, and then handing off a dashboard that reveals the insights and makes smart decisions.</p>
+        <p>I'm a Data Analyst at LeadingAge in Washington, DC, where I pull, clean, and analyze data from Salesforce (Nimble AMS) and outside sources to support membership, revenue, and engagement reporting. I came up through data quality and intern roles on the same team, and before that I ran an 8,000-record database migration at George Mason's Office of University Branding.</p>
+        <p>I like the parts of this work most people skip: validating fields, chasing down duplicates, making sure the number everyone trusts is actually correct. The dashboard is the easy part. Earning the right to put a number on it isn't.</p>
         <div style="margin-top:20px;">
-          <div class="edu-line"><span>Degree</span><span>B.S. Information Technology, GMU — May 2026</span></div>
-          <div class="edu-line"><span>GPA</span><span>3.91</span></div>
-          <div class="edu-line"><span>Honors</span><span>Dean's List</span></div>
-          <div class="edu-line"><span>Scholarship</span><span>Northrop Grumman STEM Scholar (2024–2026) x2</span></div>
-          <div class="edu-line"><span>Coursework</span><span>Database Technology & Programming; Cybersecurity</span></div>
+          <div class="edu-line"><span>Degree</span><span>B.S. Information Technology, GMU, May 2026</span></div>
+          <div class="edu-line"><span>GPA</span><span>3.91 / 4.00</span></div>
+          <div class="edu-line"><span>Honors</span><span>Summa cum laude, Dean's List</span></div>
+          <div class="edu-line"><span>Scholarship</span><span>Northrop Grumman STEM Scholar, 2024 to 2026</span></div>
+          <div class="edu-line"><span>Coursework</span><span>Database technology &amp; programming; cybersecurity</span></div>
         </div>
       </div>
-      <div class="card skill-bars">
+      <div class="card skills">
+        <h3>Tools and depth</h3>
+        <p class="legend">Roast level: light is familiar, medium is proficient, dark is advanced.</p>
+
         <div class="row">
-          <div class="row-top"><span>SQL (Oracle, PL/SQL, SQL Server)</span><span class="pct">Advanced</span></div>
-          <div class="track"><span style="width:92%; background:var(--espresso)"></span></div>
+          <span class="name">SQL (Oracle, PL/SQL, SQL Server)</span>
+          <span class="level"><span class="word">Advanced</span><span class="roast" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span></span>
         </div>
         <div class="row">
-          <div class="row-top"><span>Python (Pandas, NumPy)</span><span class="pct">Advanced</span></div>
-          <div class="track"><span style="width:85%; background:var(--espresso)"></span></div>
+          <span class="name">Python (Pandas, NumPy)</span>
+          <span class="level"><span class="word">Advanced</span><span class="roast" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span></span>
         </div>
         <div class="row">
-          <div class="row-top"><span>Advanced Excel</span><span class="pct">Advanced</span></div>
-          <div class="track"><span style="width:90%; background:var(--espresso)"></span></div>
+          <span class="name">Advanced Excel &amp; Power Query</span>
+          <span class="level"><span class="word">Advanced</span><span class="roast" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span></span>
         </div>
         <div class="row">
-          <div class="row-top"><span>Tableau / Power BI</span><span class="pct">Proficient</span></div>
-          <div class="track"><span style="width:80%; background:var(--coffee);"></span></div>
+          <span class="name">Microsoft Access</span>
+          <span class="level"><span class="word">Proficient</span><span class="roast" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span></span>
         </div>
         <div class="row">
-          <div class="row-top"><span>Salesforce (Nimble AMS)</span><span class="pct">Proficient</span></div>
-          <div class="track"><span style="width:82%; background:var(--coffee);"></span></div>
+          <span class="name">Tableau / Power BI</span>
+          <span class="level"><span class="word">Proficient</span><span class="roast" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span></span>
         </div>
         <div class="row">
-          <div class="row-top"><span>JavaScript</span><span class="pct">Familiar</span></div>
-          <div class="track"><span style="width:55%; background:var(--latte);"></span></div>
+          <span class="name">Salesforce (Nimble AMS)</span>
+          <span class="level"><span class="word">Proficient</span><span class="roast" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span></span>
+        </div>
+        <div class="row">
+          <span class="name">JavaScript</span>
+          <span class="level"><span class="word">Familiar</span><span class="roast" aria-hidden="true"><i class="on"></i><i></i><i></i></span></span>
         </div>
       </div>
     </div>
@@ -255,112 +347,126 @@
 <section id="experience">
   <div class="wrap">
     <span class="eyebrow">Experience</span>
-    <h2 class="section-title">Where I've Worked</h2>
+    <h2 class="section-title">Where I've worked</h2>
     <div class="timeline">
+
       <div class="t-item">
-        <span class="period">May 2026 — Present</span>
+        <span class="period">May 2026 to Present</span>
         <h3>Data Analyst</h3>
         <span class="org">LeadingAge, Washington, DC</span>
         <ul>
-          <li>Collecting, processing, and visualizing data from enterprise-level sources, including Salesforce/Nimble AMS, IRS 990 forms, HUD housing data, CMS/CCN provider data, and marketing platforms, using Excel, Power Query, Access, and Tableau, resulting in accurate, decision-ready datasets for organizational stakeholders. </li>
-          <li>Designing and maintaining interactive dashboards and reports, using Tableau, resulting in timely and accurate performance insights delivered to staff and leadership.</li>
-          <li>Owning the end-to-end Student Membership pipeline, from data verification and eligibility checks through granting membership, ensuring accurate, timely processing and data integrity across the full membership lifecycle.</li>
-          <li>Analyzing structured and unstructured data from multiple datasets, using statistical analysis and trend identification techniques, resulting in key performance metrics that support operational and business performance monitoring. </li>
-          <li>Cleaning, transforming, validating, and labeling datasets, including verification of Home Health, Hospice, and Skilled Nursing Facility CCNs, using Excel, SQL, and data quality management practices, resulting in reliable, audit-ready data for recurring and ad hoc stakeholder reporting.</li>
-        <li> Producing recurring and ad hoc reports for IT stakeholders, translating analytical findings into clear, actionable summaries for non-technical audiences.</li></ul>
+          <li>Run the ELT process for enterprise data: extract from Salesforce/Nimble AMS, IRS 990 filings, HUD housing data, CMS provider records, and marketing platforms; load into the CRM; then transform records into decision-ready datasets.</li>
+          <li>Build Access SQL queries and advanced Excel workbooks that audit loaded data, catching duplicates, broken joins, and out-of-range values before they reach reporting. This includes verification of Home Health, Hospice, and Skilled Nursing Facility CCNs.</li>
+          <li>Own the student membership pipeline end to end, from eligibility verification through granting membership, keeping the full lifecycle accurate and on schedule.</li>
+          <li>Build and maintain Tableau dashboards so staff and leadership see current performance numbers without filing a request.</li>
+        </ul>
       </div>
+
       <div class="t-item">
-        <span class="period">Oct 2025 — May 2026</span>
+        <span class="period">Oct 2025 to May 2026</span>
         <h3>Data Quality Assistant</h3>
         <span class="org">LeadingAge, Washington, DC</span>
         <ul>
-          <li>Standardized and validated Salesforce (Nimble AMS) fields to enforce data governance across departments.</li>
-          <li>Cleaned, validated, and transformed large datasets 100,000+ records using SQL and advanced Excel, applying data quality management and cleaning practices while maintaining high-quality data standards.</li>
-          <li>Created SQL validation scripts to identify billing discrepancies before processing, contributing to 100% billing accuracy and communicating findings to cross-functional stakeholders.</li>
-          <li>Collaborated with multiple departments to resolve data questions, maintain consistent business definitions across teams, and support ad hoc reporting requests.</li>
+          <li>Wrote SQL validation scripts that caught billing discrepancies before processing, holding billing at 100% accuracy.</li>
+          <li>Cleaned and transformed 100,000+ records in SQL and advanced Excel against defined data-quality standards.</li>
+          <li>Standardized Salesforce (Nimble AMS) fields across departments to enforce governance and keep business definitions consistent between teams.</li>
         </ul>
       </div>
+
       <div class="t-item">
-        <span class="period">Aug 2025 — Oct 2025</span>
+        <span class="period">Aug 2025 to Oct 2025</span>
         <h3>Data Intern</h3>
         <span class="org">LeadingAge, Washington, DC</span>
         <ul>
-          <li>Extracted, cleaned, and analyzed data from Salesforce (Nimble AMS) to support operational reporting.</li>
-          <li>Developed dashboards and reports using Excel (pivot tables, macros, charts) for stakeholders.</li>
-          <li>Built data quality check process to evaluate third-party sources supporting vendor-contract renewal decision. </li>
+          <li>Built a data-quality check process for third-party sources that informed a vendor contract renewal decision.</li>
+          <li>Extracted and analyzed Salesforce (Nimble AMS) data for operational reporting.</li>
+          <li>Developed Excel dashboards with pivot tables, macros, and charts for stakeholder use.</li>
         </ul>
       </div>
+
       <div class="t-item">
-        <span class="period">May 2024 — May 2026</span>
+        <span class="period">May 2024 to May 2026</span>
         <h3>Database Assistant</h3>
         <span class="org">George Mason University, Office of University Branding</span>
         <ul>
-          <li>Managed and validated more than 8,000 records across 200 excel files to maintain 100% data integrity in operations reporting.</li>
-          <li>Migrated legacy Excel-based database to CRM (Zoho CRM), consolidating to more than 5,000 unique records and cutting report processing time by 80%.</li>
-          <li>Built SQL queries and automated Access workflows to detect duplicates and audit data quality.</li>
-          <li>Migrated legacy databases into a CRM systems and automated workflows, reducing report process time by 90% while maintaining 100% data accuracy and integrity.</li>
-          <li>Interviewed and onboarded new staffs.</li>
-          <li>Trained 5+ personnel including supervisors and staff on new CRM modules, reducing ramp-up time, and ensuring the team's ability to work efficiently with the new system.</li>
+          <li>Migrated a legacy database of 200+ Excel files into Zoho CRM, consolidating 5,000+ unique records and cutting report processing time by 80%.</li>
+          <li>Maintained 100% data integrity across 8,000+ records using SQL queries and automated Access workflows that surfaced duplicates.</li>
+          <li>Trained 5+ staff and supervisors on the new CRM modules, shortening ramp-up time for the team.</li>
         </ul>
       </div>
+
       <div class="t-item">
-        <span class="period">Feb 2024 — May 2026</span>
+        <span class="period">Feb 2024 to May 2026</span>
         <h3>Peer Mentor</h3>
-        <span class="org">George Mason University, CEC Department</span>
+        <span class="org">George Mason University, College of Engineering and Computing</span>
         <ul>
-          <li>Tutored IT students in IT-related subjects such as Mathematics, Database, Programming, Cybersecurity.</li>
-          <li>Applied expertise to assist students in need, improving problem-solving skills for a stronger foundation in IT. </li>
+          <li>Tutored IT students in databases, programming, mathematics, and cybersecurity.</li>
         </ul>
       </div>
+
       <div class="t-item">
-        <span class="period">Jan 2021 — Present</span>
+        <span class="period">Jan 2021 to Present</span>
         <h3>Pharmacy Technician</h3>
-        <span class="org">Giant Food Inc., Annandale, VA</span>
+        <span class="org">Giant Food, Annandale, VA</span>
         <ul>
-          <li>Prepare and dispense prescriptions, manage medication inventory, and deliver customer service in a fast-paced environment.</li>
+          <li>Dispense prescriptions and manage medication inventory in a high-volume pharmacy, alongside full-time study and data work.</li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>
 
 <section id="projects">
   <div class="wrap">
-    <span class="eyebrow">Selected Work</span>
+    <span class="eyebrow">Selected work</span>
     <h2 class="section-title">Projects</h2>
     <div class="projects-grid">
+
       <div class="card pcard">
-        <div class="tagrow"><span>Python</span><span>Tableau</span><span>Healthcare</span></div>
-        <h3>U.S. Nursing Home Analysis</h3>
-        <p>Cleaned and pre-processed large-scale healthcare datasets with Pandas, then built interactive Tableau dashboards presenting status-at-a-glance KPIs and quality metrics for stakeholders.</p>
-        <a href="https://public.tableau.com/views/NursingHomeVisualization_17651681851060/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener">View Tableau Dashboard →</a>
+        <div class="tagrow"><span>Python</span><span>Pandas</span><span>Tableau</span><span>Healthcare</span></div>
+        <h3>U.S. nursing home analysis</h3>
+        <p>Cleaned and pre-processed large-scale CMS healthcare datasets with Pandas, then built interactive Tableau dashboards surfacing quality metrics and at-a-glance KPIs for stakeholders. This is the dashboard embedded at the top of the page.</p>
+        <div class="links">
+          <a href="https://public.tableau.com/views/NursingHomeVisualization_17651681851060/Dashboard1?:language=en-US&amp;:sid=&amp;:redirect=auth&amp;:display_count=n&amp;:origin=viz_share_link" target="_blank" rel="noopener">View Tableau dashboard</a>
+        </div>
       </div>
+
       <div class="card pcard">
-        <div class="tagrow"><span>Python</span><span>ML</span><span>NLP</span></div>
-        <h3>Airline Feedback Analysis</h3>
+        <div class="tagrow"><span>Python</span><span>NLP</span><span>Random Forest</span></div>
+        <h3>Airline feedback analysis</h3>
         <p>Scraped and analyzed 1,000+ airline reviews with BeautifulSoup and Pandas to identify sentiment drivers, then built a Random Forest model reaching 85% accuracy on booking behavior.</p>
-        <a href="https://github.com/katng2886/BA_DS" target="_blank" rel="noopener">View on GitHub →</a>
+        <div class="links">
+          <a href="https://github.com/katng2886/BA_DS" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
       </div>
+
       <div class="card pcard">
-        <div class="tagrow"><span>Python</span><span>ML</span><span>NLP</span></div>
-        <h3>EV Cars Analysis</h3>
-        <p>Analyzing publicly available data on electric vehicle (EV) registrations in Washington State to identify trends, top locations, and manufacturers.</p>
-        <a href="https://github.com/katng2886/EV_analysis" target="_blank" rel="noopener">View on GitHub →</a>
+        <div class="tagrow"><span>Python</span><span>Pandas</span><span>EDA</span></div>
+        <h3>Washington State EV registrations</h3>
+        <p>Analyzed public electric vehicle registration data to find adoption trends, the counties driving growth, and which manufacturers hold share over time.</p>
+        <div class="links">
+          <a href="https://github.com/katng2886/EV_analysis" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
       </div>
+
       <div class="card pcard">
-        <div class="tagrow"><span>Python</span><span>ML</span><span>NLP</span></div>
-        <h3>Movie Recommendations Web Application</h3>
-        <p>Movie Recommandation system that allows users to find movie details, recommends movies based on mood.</p>
-        <a href="https://github.com/katng2886/MovieRecommendation/tree/main" target="_blank" rel="noopener">View on GitHub →</a>
+        <div class="tagrow"><span>Python</span><span>Recommender</span><span>Web app</span></div>
+        <h3>Movie recommendation web app</h3>
+        <p>A recommendation system that looks up movie details and suggests titles based on the mood a user picks, served through a lightweight web interface.</p>
+        <div class="links">
+          <a href="https://github.com/katng2886/MovieRecommendation/tree/main" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap">
-    <span class="eyebrow">Get in Touch</span>
-    <h2 class="section-title">Say Hello</h2>
+    <span class="eyebrow">Get in touch</span>
+    <h2 class="section-title">Say hello</h2>
     <div class="contact-grid">
       <div class="card"><span>Email</span><a href="mailto:katienguyendata@gmail.com">katienguyendata@gmail.com</a></div>
       <div class="card"><span>LinkedIn</span><a href="https://www.linkedin.com/in/ngoc-kha-tu-nguyen/" target="_blank" rel="noopener">ngoc-kha-tu-nguyen</a></div>
@@ -369,10 +475,48 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <span>&copy; 2026 Katie Kha-Tu Nguyen</span>
   <span class="mono">Fairfax, VA</span>
 </footer>
+
+<script>
+  (function(){
+    var btn = document.getElementById('navToggle');
+    var nav = document.getElementById('nav');
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    var frame  = document.querySelector('.viz-frame');
+    var scaler = document.querySelector('.viz-scaler');
+    if (frame && scaler) {
+      var VW = parseInt(frame.getAttribute('data-viz-width'), 10)  || 1000;
+      var VH = parseInt(frame.getAttribute('data-viz-height'), 10) || 800;
+      var fitViz = function(){
+        var avail = frame.clientWidth;
+        if (!avail) return;
+        var s = avail / VW;
+        scaler.style.width     = VW + 'px';
+        scaler.style.height    = VH + 'px';
+        scaler.style.transform = 'scale(' + s + ')';
+        frame.style.height     = Math.round(VH * s) + 'px';
+      };
+      fitViz();
+      window.addEventListener('resize', fitViz);
+      window.addEventListener('load', fitViz);
+    }
+  })();
+</script>
 
 </body>
 </html>
